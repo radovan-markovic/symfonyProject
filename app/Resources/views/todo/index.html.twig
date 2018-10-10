@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2 class page-header>Latest ToDos</h2>
+     <table class="table table-striped"> 
+        <thead> 
+            <tr> <th>#</th> 
+                <th>Name</th>
+                <th>Description</th> 
+                <th>Due Date</th> 
+                <th>Cretae Date</th>
+            </tr> 
+        </thead> 
+        <tbody>
+            {% for todo in todos %} 
+            <tr> 
+                <th scope="row">{{todo.id}}</th> 
+                    <td>{{todo.name}}</td> 
+                    <td>{{todo.description}}</td>
+                    <td>{{todo.dueDate|date ('F j, Y, g:i, a')}}</td>
+                    <td>{{todo.createDate|date ('F j, Y, g:i, a')}}</td>
+                    <td><a href="/symfonyProject/web/todos/edit/{{todo.id}}" class="btn btn-success">Edit</a></td>
+                    <td><a href="/symfonyProject/web/todos/delete/{{todo.id}}" class="btn btn-danger">Delete</a></td> 
+            </tr> 
+            {% endfor %}
+        </tbody> 
+        </table> 
+{% endblock %}
